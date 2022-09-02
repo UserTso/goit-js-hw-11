@@ -36,8 +36,16 @@ async function onInputFormSearch(event) {
          return;
         }
         createMarkupItem(fetchResult.data.hits);
+  if(apiServiceElement.page>=Math.ceil(fetchResult.data.totalHits
+/apiServiceElement.per_page)) {
+        refs.loadMoreBtn.classList.add('is-hidden');
+        Notiflix.Notify.info("We're sorry, but you've reached the end of search results.")
+  } else {
+      refs.loadMoreBtn.classList.remove('is-hidden'); 
+    }
+
         instance.refresh();
-        refs.loadMoreBtn.classList.remove('is-hidden'); 
+        
     } catch (error) {
         console.log(error)
     }
@@ -55,12 +63,15 @@ async function onClickLoadMoreBtn(event) {
         createMarkupItem(fetchResult.data.hits);
         instance.refresh();
         
-    if (fetchResult.data.hits <= apiServiceElement.per_page*apiServiceElement.page) {
+        if(apiServiceElement.page>=Math.ceil(fetchResult.data.totalHits
+/apiServiceElement.per_page)) {
         refs.loadMoreBtn.classList.add('is-hidden');
         Notiflix.Notify.info("We're sorry, but you've reached the end of search results.")
     };
     
 } catch (error) {
+
+    // if (fetchResult.data.hits < apiServiceElement.per_page*apiServiceElement.page)
     
 }
 
