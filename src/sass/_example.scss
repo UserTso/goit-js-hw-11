@@ -26,3 +26,47 @@
   background-size: cover;
   background-position: center;
 }
+
+body {
+  text-align: center;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.btn {
+  border-radius: 8px;
+}
+
+.photo-card {
+  width: 370px;
+  // margin-right: 30px;
+}
+
+.gallery {
+  display: flex;
+  width: 1200px;
+  flex-wrap: wrap;
+  gap: 45;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: black;
+}
+
+.search-form {
+  margin-bottom: 20px;
+}
+
+.is-hidden {
+  display: none;
+}
